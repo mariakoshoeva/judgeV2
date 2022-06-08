@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
+
 public class UserRegisterBindingModel {
     @Length(min = 2,max = 20, message = "Username must be between 2 and 20 characters!")
     private String username;
