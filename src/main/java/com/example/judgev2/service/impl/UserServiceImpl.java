@@ -13,6 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -68,4 +69,29 @@ public class UserServiceImpl implements UserService {
     public void logout() {
         currentUser.setRole(null).setUsername(null).setId(null);
     }
+
+    @Override
+    public List<String> getAllUserNames() {
+        return this.userRepository.findAllUsernames();
+    }
+
+    @Override
+    public void changeRole(String username, String role) {
+        Optional<UserEntity> byUsername = userRepository.findByUsername(username);
+        if(byUsername.isPresent()){
+            RoleEntity roleEntity = roleService.findRole(RoleNameEnum.valueOf(role.toUpperCase()));
+            UserEntity userEntity = byUsername.get();
+            if(userEntity.getRole()!= roleEntity){
+                userEntity.setRole(roleEntity);
+                userRepository.save(userEntity);
+            }
+        }
+    }
+
+    @Override
+    public UserEntity findById(Long id) {
+        return this.userRepository.findById(id).get();
+    }
+
+
 }

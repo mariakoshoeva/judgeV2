@@ -1,4 +1,4 @@
-package com.example.judgev2.models.entity;
+package com.example.judgev2.models.binding;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;

@@ -1,6 +1,6 @@
 package com.example.judgev2.web;
 
-import com.example.judgev2.models.entity.ExerciseBindingModel;
+import com.example.judgev2.models.binding.ExerciseBindingModel;
 import com.example.judgev2.security.CurrentUser;
 import com.example.judgev2.service.ExerciseService;
 import org.springframework.stereotype.Controller;
